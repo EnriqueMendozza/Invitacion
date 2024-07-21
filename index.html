@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Invitación de Boda</title>
+    <style>
+        body {
+            display: flex;
+            background-image: url("images/img4.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #4e4e4e;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .adaptivecontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 80vw; /* 80% del ancho de la ventana */
+            height: 80vh; /* 80% de la altura de la ventana */
+            min-width: 300px; /* Ancho mínimo */
+            min-height: 200px; /* Altura mínima */
+            /*max-width: 1200px;  Ancho máximo */
+            /*max-height: 800px;  Altura máxima */
+        }
+        .envelope {
+            position: relative;
+            width: 750px;
+            height: 475px;
+            perspective: 1000px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        .envelope .flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 2px solid #020202;
+            border-radius: 4px;
+            transform-origin: bottom;
+            transition: transform 1s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .envelope .flap.top {
+            transform: rotateX(0deg);
+        }
+        .envelope .flap.bottom {
+            transform: rotateX(180deg);
+            background: #fff;
+            opacity: 100%;
+            display: none;
+        }
+        .envelope.open .flap.top {
+            transform: rotateX(-90deg);
+        }
+        .envelope.open .flap.bottom {
+            transform: rotateX(0deg);
+            opacity: 100%;
+            display: block;
+        }
+        .envelope .content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 2s ease, transform 5s ease 0.5s;
+            pointer-events: none;
+        }
+        .envelope.open .content {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+        .content img {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+        }
+        .content h1 {
+            display: inline-block;
+            text-align: center;
+            font-size: 36px;
+            color: #000000;
+            margin: 25px 0 10px;
+        }
+        .content p {
+            text-align: center;
+            font-size: 18px;
+            color: #000000;
+        }
+        .button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .location {
+            text-align: center;
+        }
+        .location h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .location a {
+            display: inline-block;
+            margin: auto;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background: #888888;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .location a:hover {
+            background: #000000;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="adaptivecontainer">
+        <div class="envelope">
+            <div class="flap top"></div>
+            <div class="flap bottom"></div>
+            <div class="content">
+                <img src="/images/img3.jpg" alt="Imagen de la Boda">
+                <h1></h1>
+                <p>Samantha Michelle & Juan Carlos</p>
+                <p>¡Te Invitamos a Nuestra Boda!</p>
+                <p>Fecha: 17 de Agosto de 2024<br>Ubicación: SM Eventos, Calle 21 Marzo con Nezahualcoyotl</p> 
+                <div class="location">
+                    <h1></h1>
+                    <a href="https://maps.app.goo.gl/3A5UKBWPxSqx49Po6" target="_blank">
+                        Ver en Google Maps
+                    </a>
+                </div> 
+            </div>
+            
+            <button class="button" onclick="toggleEnvelope()"></button>
+        </div>
+    </div>
+
+    <script>
+        function toggleEnvelope() {
+            document.querySelector('.envelope').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
