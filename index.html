@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Invitación de Boda</title>
     <style>
         body {
@@ -21,23 +21,24 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
+            overflow: hidden; /*Esto eliminará los scrollers*/
         }
         .adaptivecontainer {
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            width: 80vw; /* 80% del ancho de la ventana */
-            height: 80vh; /* 80% de la altura de la ventana */
-            min-width: 300px; /* Ancho mínimo */
-            min-height: 200px; /* Altura mínima */
-            /*max-width: 1200px;  Ancho máximo */
-            /*max-height: 800px;  Altura máxima */
+            width: 80vw;
+            height: 80vh;
+            min-width: 300px;
+            min-height: 200px;
         }
         .envelope {
             position: relative;
-            width: 750px;
-            height: 475px;
+            width: 100%;
+            max-width: 750px;
+            height: 100%;
+            max-height: 475px;
             perspective: 1000px;
             cursor: pointer;
             margin: 0 auto;
@@ -93,7 +94,7 @@
         }
         .content img {
             width: 100%;
-            height: 100%;
+            height: auto;
             border-radius: 4px;
         }
         .content h1 {
@@ -155,15 +156,15 @@
                 <h1></h1>
                 <p>Samantha Michelle & Juan Carlos</p>
                 <p>¡Te Invitamos a Nuestra Boda!</p>
-                <p>Fecha: 17 de Agosto de 2024<br>Ubicación: SM Eventos, Calle 21 Marzo con Nezahualcoyotl</p> 
+                <p>Fecha: 17 de Agosto de 2024<br>Ubicación: SM Eventos, Calle 21 Marzo con Nezahualcoyotl</p>
                 <div class="location">
                     <h1></h1>
                     <a href="https://maps.app.goo.gl/3A5UKBWPxSqx49Po6" target="_blank">
                         Ver en Google Maps
                     </a>
-                </div> 
+                </div>
             </div>
-            
+
             <button class="button" onclick="toggleEnvelope()"></button>
         </div>
     </div>
