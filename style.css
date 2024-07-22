@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     display: flex;
     background-image: url("images/img4.jpg");
@@ -51,16 +51,16 @@ body {
 .envelope .flap.bottom {
     transform: rotateX(180deg);
     background: #fff;
-    opacity: 100%;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 .envelope.open .flap.top {
     transform: rotateX(-90deg);
 }
 .envelope.open .flap.bottom {
     transform: rotateX(0deg);
-    opacity: 100%;
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 .envelope .content {
     position: absolute;
@@ -75,7 +75,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: scale(0.8);
-    transition: opacity 2s ease, transform 5s ease 0.5s;
+    transition: opacity 2s ease, transform 2s ease;
     pointer-events: none;
 }
 .envelope.open .content {
