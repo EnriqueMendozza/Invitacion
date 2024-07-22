@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
     display: flex;
     background-image: url("images/img4.jpg");
@@ -12,8 +13,19 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden; /*Esto eliminará los scrollers*/
 }
+
+.background {
+    position: fixed; /* Usa fixed para que cubra toda la ventana */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("images/img4.jpg") no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1; /* Asegúrate de que esté detrás del contenido */
+}
+
 .adaptivecontainer {
     display: flex;
     justify-content: center;
@@ -24,16 +36,18 @@ body {
     min-width: 300px;
     min-height: 200px;
 }
+
 .envelope {
     position: relative;
     width: 100%;
     max-width: 750px;
-    height: 100%;
+    height: auto;
     max-height: 475px;
+    aspect-ratio: 1.6;
     perspective: 1000px;
-    cursor: pointer;
-    margin: 0 auto;
+    transition: transform 1s ease;
 }
+
 .envelope .flap {
     position: absolute;
     width: 100%;
@@ -41,27 +55,74 @@ body {
     background: #fff;
     border: 2px solid #020202;
     border-radius: 4px;
-    transform-origin: bottom;
-    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    transition: transform 1s ease, border 0s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
 .envelope .flap.top {
+    transform-origin: bottom;
     transform: rotateX(0deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
+
+.envelope .flap.top .flap-content {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+    color: #000000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    visibility: hidden;
+}
+
+.envelope .flap.top img {
+    max-width: 90%;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+}
+
 .envelope .flap.bottom {
-    transform: rotateX(180deg);
+    transform-origin: top;
+    transform: rotateX(90deg);
     background: #fff;
     opacity: 0;
     visibility: hidden;
+    transition: transform 1s ease, opacity 1s ease;
+    height: 75%;
 }
+
 .envelope.open .flap.top {
-    transform: rotateX(-90deg);
+    transform: rotateX(0deg);
+    border: none;
 }
+
 .envelope.open .flap.bottom {
     transform: rotateX(0deg);
     opacity: 1;
     visibility: visible;
+    border: none;
 }
+
+.envelope.close .flap.top {
+    transform: rotateX(0deg);
+}
+
+.envelope.close .flap.bottom {
+    transform: rotateX(180deg);
+    opacity: 0;
+    visibility: hidden;
+}
+
 .envelope .content {
     position: absolute;
     top: 20px;
@@ -72,42 +133,49 @@ body {
     border: 2px solid #ccc;
     border-radius: 4px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: scale(0.8);
-    transition: opacity 2s ease, transform 2s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     pointer-events: none;
 }
+
 .envelope.open .content {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
 }
+
 .content img {
-    width: 100%;
+    width: auto;
     height: 100%;
     margin-bottom: 20px;
     border-radius: 4px;
     align-items: center;
 }
+
 .content h1 {
     display: inline-block;
     text-align: center;
     font-size: 36px;
     color: #000000;
-    margin: 25px 0 10px;
+    margin: 10px 0 10px;
 }
+
 .content p {
     text-align: center;
     font-size: 18px;
     color: #000000;
 }
+
 .Nombres {
-    font-size: 24px;
+    margin-top: 30px;
+    font-size: 256px;
     font-weight: bold;
     color: #000000;
     font-family: 'Playwrite CU', sans-serif;
 }
+
 .button {
     position: absolute;
     top: 50%;
@@ -119,9 +187,11 @@ body {
     background: transparent;
     border: none;
 }
+
 .location {
     text-align: center;
 }
+
 .location h1 {
     margin-bottom: 10px;
     font-size: 24px;
@@ -130,6 +200,7 @@ body {
     height: auto;
     width: auto;
 }
+
 .location a {
     display: inline-block;
     margin: auto;
@@ -141,7 +212,113 @@ body {
     text-decoration: none;
     transition: background 0.3s, transform 0.3s;
 }
+
 .location a:hover {
     background: #000000;
     transform: scale(1.05);
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .envelope {
+        max-width: 650px;
+        max-height: 425px;
+    }
+    .content h1 {
+        font-size: 32px;
+    }
+    .content p {
+        font-size: 16px;
+    }
+    .location h1 {
+        font-size: 22px;
+    }
+    .location a {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .envelope {
+        max-width: 550px;
+        max-height: 375px;
+    }
+    .content h1 {
+        font-size: 28px;
+    }
+    .content p {
+        font-size: 14px;
+    }
+    .location h1 {
+        font-size: 20px;
+    }
+    .location a {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .envelope {
+        max-width: 450px;
+        max-height: 325px;
+    }
+    .content h1 {
+        font-size: 24px;
+    }
+    .content p {
+        font-size: 12px;
+    }
+    .location h1 {
+        font-size: 18px;
+    }
+    .location a {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .envelope {
+        max-width: 350px;
+        max-height: 275px;
+    }
+    .content h1 {
+        font-size: 20px;
+    }
+    .content p {
+        font-size: 10px;
+    }
+    .location h1 {
+        font-size: 16px;
+    }
+    .location a {
+        padding: 6px 14px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .adaptivecontainer {
+        width: 90vw;
+        height: 90vh;
+    }
+    .envelope {
+        max-width: 300px;
+        max-height: 225px;
+    }
+    .content h1 {
+        font-size: 18px;
+    }
+    .content p {
+        font-size: 8px;
+    }
+    .location h1 {
+        font-size: 14px;
+    }
+    .location a {
+        padding: 4px 12px;
+        font-size: 8px;
+    }
 }
