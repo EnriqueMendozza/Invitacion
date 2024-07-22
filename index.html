@@ -43,9 +43,6 @@
             perspective: 1000px;
             cursor: pointer;
             margin: 0 auto;
-            border: 2px solid #000000;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         .envelope .flap {
             position: absolute;
@@ -99,7 +96,9 @@
         .content img {
             width: 100%;
             height: 100%;
+            margin-bottom: 20px;
             border-radius: 4px;
+            align-items: center;
         }
         .content h1 {
             display: inline-block;
@@ -107,19 +106,25 @@
             font-size: 36px;
             color: #000000;
             margin: 25px 0 10px;
-        }	
+        }
         .content p {
             text-align: center;
             font-size: 18px;
             color: #000000;
+        }
+        .Nombres {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            font-family: 'Playwrite CU', sans-serif;
         }
         .button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50%;
-            height: 50%;
+            width: 100%;
+            height: 100%;
             cursor: pointer;
             background: transparent;
             border: none;
@@ -148,13 +153,6 @@
             background: #000000;
             transform: scale(1.05);
         }
-        .Nombres {
-            font-size: 256px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-            font-family: 'Playwrite CU', sans-serif;
-        }
     </style>
 </head>
 <body>
@@ -175,7 +173,6 @@
                     </a>
                 </div>
             </div>
-            <div class="content"></div>
 
             <button class="button" onclick="toggleEnvelope()"></button>
         </div>
