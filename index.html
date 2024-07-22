@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Invitación de Boda</title>
+    <title>Invitación!</title>
     <style>
         body {
             display: flex;
@@ -42,6 +42,9 @@
             perspective: 1000px;
             cursor: pointer;
             margin: 0 auto;
+            border: 2px solid #000000;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         .envelope .flap {
             position: absolute;
@@ -94,7 +97,7 @@
         }
         .content img {
             width: 100%;
-            height: auto;
+            height: 100%;
             border-radius: 4px;
         }
         .content h1 {
@@ -103,7 +106,7 @@
             font-size: 36px;
             color: #000000;
             margin: 25px 0 10px;
-        }
+        }	
         .content p {
             text-align: center;
             font-size: 18px;
@@ -114,8 +117,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
+            width: 50%;
+            height: 50%;
             cursor: pointer;
             background: transparent;
             border: none;
@@ -164,6 +167,7 @@
                     </a>
                 </div>
             </div>
+            <div class="content"></div>
 
             <button class="button" onclick="toggleEnvelope()"></button>
         </div>
