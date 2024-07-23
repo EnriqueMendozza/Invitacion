@@ -16,14 +16,14 @@ body {
 }
 
 .background {
-    position: fixed; /* Usa fixed para que cubra toda la ventana */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: url("images/img4.jpg") no-repeat center center fixed;
     background-size: cover;
-    z-index: -1; /* Asegúrate de que esté detrás del contenido */
+    z-index: -1;
 }
 
 .adaptivecontainer {
@@ -62,12 +62,20 @@ body {
 
 .envelope .flap.top {
     transform-origin: bottom;
-    transform: rotateX(0deg);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative;
+}
+
+.flaptopimg{
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    max-width: 50%;
+    max-height: 50%;
 }
 
 .envelope .flap.top .flap-content {
@@ -93,21 +101,28 @@ body {
 
 .envelope .flap.bottom {
     transform-origin: top;
-    transform: rotateX(90deg);
+    transform: rotateX(0deg);
     background: #fff;
     opacity: 0;
-    visibility: hidden;
+    visibility: visible;
     transition: transform 1s ease, opacity 1s ease;
     height: 75%;
 }
 
 .envelope.open .flap.top {
-    transform: rotateX(0deg);
+    transform-origin: top;
+    transform: rotateX(180deg);
     border: none;
+    transition: opacity 0.5 ease, transfomr 0.5s ease;
+}
+
+.envelope.open .flaptopimg{
+    visibility: hidden;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .envelope.open .flap.bottom {
-    transform: rotateX(0deg);
+    transform: rotateX(45deg);
     opacity: 1;
     visibility: visible;
     border: none;
@@ -115,21 +130,28 @@ body {
 
 .envelope.close .flap.top {
     transform: rotateX(0deg);
+    transform-origin: top;
+    transition: transform 2s ease, opacity 1s ease;
+}
+
+.envelope.close.flaptopimg{
+    transition: transform 2s ease, opacity 2s ease;
 }
 
 .envelope.close .flap.bottom {
     transform: rotateX(180deg);
-    opacity: 0;
-    visibility: hidden;
+    transition: transform 2s ease, opacity 1s ease;
+    opacity: 1;
+    z-index: -1;
 }
 
 .envelope .content {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background: #fff;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    background: #ffffff;
     border: 2px solid #ccc;
     border-radius: 4px;
     padding: 20px;
@@ -144,14 +166,18 @@ body {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
+    justify-content: center;
 }
 
 .content img {
     width: auto;
     height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 4px;
     align-items: center;
+    justify-content: center;
 }
 
 .content h1 {
@@ -168,6 +194,13 @@ body {
     color: #000000;
 }
 
+.textoargollas{
+    margin-top: auto;
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family: 'Playwrite CU', sans-serif;
+}
 .Nombres {
     margin-top: 30px;
     font-size: 256px;
